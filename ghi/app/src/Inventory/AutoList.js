@@ -35,6 +35,7 @@ function AutomobileList() {
         <div className="col-11 col-lg-9">
         <div className="shadow p-4 rounded bg-white">
             <h1>Automobile List</h1>
+        <div className="table-responsive">
         <table className="table table-striped">
             <thead>
                 <tr>
@@ -58,9 +59,9 @@ function AutomobileList() {
                             <td> { autos.model.name } </td>
                             <td> { autos.model.manufacturer.name } </td>
                             <td> { autos.sold ? 'Yes' : 'No' } </td>
-                            <td>
+                            <td className="text-nowrap">
                                 <button
-                                    className="btn btn-danger"
+                                    className="btn btn-danger btn-sm"
                                     onClick={() => handleDelete(autos.vin)}
                                 >
                                     Delete
@@ -71,6 +72,7 @@ function AutomobileList() {
                 })}
             </tbody>
         </table>
+        </div>
         </div>
         </div>
         </div>
