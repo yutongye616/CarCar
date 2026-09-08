@@ -60,6 +60,7 @@ function ServHist() {
               onChange={(car) => setSearchVin(car.target.value)}
             />
           </div>
+        <div className="table-responsive">
         <table className="table table-striped">
             <thead>
                 <tr>
@@ -90,9 +91,9 @@ function ServHist() {
                             <td> { appointment.techname } </td>
                             <td> { appointment.service_reason } </td>
                             <td> { appointment.status } </td>
-                            <td>
+                            <td className="text-nowrap">
                                 <button
-                                    className="btn btn-danger"
+                                    className="btn btn-danger btn-sm"
                                     onClick={() => handleDelete(appointment.id)}
                                 >
                                     Delete
@@ -104,6 +105,7 @@ function ServHist() {
 
             </tbody>
         </table>
+        </div>
     </div>
     </div>
     </div>
