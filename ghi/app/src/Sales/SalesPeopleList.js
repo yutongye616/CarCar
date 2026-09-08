@@ -34,6 +34,7 @@ function SalesPeopleList() {
         <div className="col-11 col-lg-9">
         <div className="shadow p-4 rounded bg-white">
             <h1>Salespeople</h1>
+            <div className="table-responsive">
             <table className="table table-striped">
             <thead>
             <tr>
@@ -48,9 +49,9 @@ function SalesPeopleList() {
                 <tr key={salesperson.id}>
                     <td>{ salesperson.first_name } { salesperson.last_name }</td>
                     <td>{ salesperson.employee_id }</td>
-                    <td>
+                    <td className="text-nowrap">
                         <button
-                            className="btn btn-danger"
+                            className="btn btn-danger btn-sm"
                             onClick={() => handleDelete(salesperson.id)}
                         >
                             Delete
@@ -61,6 +62,7 @@ function SalesPeopleList() {
             })}
             </tbody>
         </table>
+        </div>
         </div>
         </div>
         </div>
