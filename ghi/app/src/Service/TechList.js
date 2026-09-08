@@ -33,6 +33,7 @@ function TechList() {
         <div className="col-11 col-lg-6">
         <div className="shadow p-4 rounded bg-white">
             <h1>Technicians List</h1>
+        <div className="table-responsive">
         <table className="table table-striped">
             <thead>
                 <tr>
@@ -50,9 +51,9 @@ function TechList() {
                         <td>{ tech.employee_id } </td>
                         <td>{ tech.first_name } </td>
                         <td>{ tech.last_name } </td>
-                        <td>
+                        <td className="text-nowrap">
                             <button
-                                className="btn btn-danger"
+                                className="btn btn-danger btn-sm"
                                 onClick={() => handleDelete(tech.id)}
                             >
                                 Delete
@@ -64,6 +65,7 @@ function TechList() {
             }
             </tbody>
         </table>
+        </div>
         </div>
         </div>
         </div>
