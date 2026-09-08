@@ -71,6 +71,7 @@ function SalesList() {
                 </select>
             </div>
 
+            <div className="table-responsive">
             <table className="table table-striped">
                 <thead>
                     <tr>
@@ -90,9 +91,9 @@ function SalesList() {
                             <td>{sale.customer.first_name} {sale.customer.last_name}</td>
                             <td>{sale.automobile.vin}</td>
                             <td>${sale.price}</td>
-                            <td>
+                            <td className="text-nowrap">
                                 <button
-                                    className="btn btn-danger"
+                                    className="btn btn-danger btn-sm"
                                     onClick={() => handleDelete(sale.id)}
                                 >
                                     Delete
@@ -102,6 +103,7 @@ function SalesList() {
                     ))}
                 </tbody>
             </table>
+            </div>
         </div>
         </div>
         </div>
