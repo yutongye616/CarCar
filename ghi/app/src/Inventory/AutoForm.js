@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { INVENTORY_API } from '../apiConfig';
 
 function AutosForm() {
     const [color, setColor] = useState('');
@@ -23,7 +24,7 @@ function AutosForm() {
     }
     const [models, setModels] = useState([]);
     const fetchData = async () => {
-        const response = await fetch('http://localhost:8100/api/models/');
+        const response = await fetch(`${INVENTORY_API}/api/models/`);
 
         if (response.ok) {
             const data = await response.json();
@@ -37,7 +38,7 @@ function AutosForm() {
             vin,
             model_id,
         };
-        const autoUrl = 'http://localhost:8100/api/automobiles/';
+        const autoUrl = `${INVENTORY_API}/api/automobiles/`;
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
@@ -61,9 +62,10 @@ function AutosForm() {
     }, []);
 
     return (
-        <div className="row">
+        <div className="hero">
+        <div className="row w-100">
           <div className="offset-3 col-6">
-            <div className="shadow p-4 mt-4">
+            <div className="shadow p-4 rounded bg-white">
               <h1>Add an automobile to inventory</h1>
               <form onSubmit={handleSubmit} id="create-auto-form">
                 <div className="form-floating mb-3">
@@ -92,6 +94,7 @@ function AutosForm() {
               </form>
             </div>
           </div>
+        </div>
         </div>
       );
     }

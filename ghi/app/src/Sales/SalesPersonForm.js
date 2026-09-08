@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { SALES_API } from '../apiConfig';
 
 function SalesPersonForm() {
     const [formData, setFormData] = useState({
@@ -10,7 +11,7 @@ function SalesPersonForm() {
     const handleSubmit = async (event) => {
         event.preventDefault()
 
-        const customerUrl = 'http://localhost:8090/api/salespeople/'
+        const customerUrl = `${SALES_API}/api/salespeople/`
 
         const fetchConfig = {
             method: "post",
@@ -41,9 +42,10 @@ function SalesPersonForm() {
     }
 
     return (
-        <div className="row">
+        <div className="hero">
+        <div className="row w-100">
             <div className="offset-3 col-6">
-                <div className="shadow p-4 mt-4">
+                <div className="shadow p-4 rounded bg-white">
                     <h1>New Salesperson</h1>
                     <form onSubmit={handleSubmit} id="create-salesperson-form">
                         <div className="form-floating mb-3">
@@ -62,6 +64,7 @@ function SalesPersonForm() {
                     </form>
                 </div>
             </div>
+        </div>
         </div>
     );
 }

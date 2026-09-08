@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { INVENTORY_API } from '../apiConfig';
 
 function ManufacturerForm() {
     const [formData, setFormData] = useState({
@@ -8,7 +9,7 @@ function ManufacturerForm() {
     const handleSubmit = async (event) => {
         event.preventDefault()
 
-        const manufacturerURL = 'http://localhost:8100/api/manufacturers/'
+        const manufacturerURL = `${INVENTORY_API}/api/manufacturers/`
 
         const fetchConfig = {
             method: 'post',
@@ -37,9 +38,10 @@ function ManufacturerForm() {
     }
 
     return (
-        <div className="row">
+        <div className="hero">
+        <div className="row w-100">
           <div className="offset-3 col-6">
-            <div className="shadow p-4 mt-4">
+            <div className="shadow p-4 rounded bg-white">
               <h1>Add a Manufacturer</h1>
               <form onSubmit={handleSubmit} id="create-manufacturer-form">
                 <div className="form-floating mb-3">
@@ -50,6 +52,7 @@ function ManufacturerForm() {
               </form>
             </div>
           </div>
+        </div>
         </div>
       );
 }

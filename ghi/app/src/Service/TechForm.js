@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { SERVICE_API } from '../apiConfig';
 
 function TechForm() {
     const [first_name, setFirst] = useState('');
@@ -18,7 +19,7 @@ function TechForm() {
     }
 
     const fetchData = async () => {
-        const response = await fetch('http://localhost:8080/api/technicians/');
+        const response = await fetch(`${SERVICE_API}/api/technicians/`);
     }
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -27,7 +28,7 @@ function TechForm() {
             last_name,
             employee_id,
         };
-        const techUrl = 'http://localhost:8080/api/technicians/'
+        const techUrl = `${SERVICE_API}/api/technicians/`
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
@@ -49,9 +50,10 @@ function TechForm() {
     }, []);
 
     return (
-        <div className="row">
+        <div className="hero">
+        <div className="row w-100">
             <div className="offset-3 col-6">
-                <div className="shadow p-4 mt-4">
+                <div className="shadow p-4 rounded bg-white">
                     <h1>Add a Technician</h1>
                     <form onSubmit={handleSubmit} id="create-tech-form">
                         <div className="form-floating mb-3">
@@ -70,6 +72,7 @@ function TechForm() {
                     </form>
                 </div>
             </div>
+        </div>
         </div>
     );
 }

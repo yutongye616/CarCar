@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { SERVICE_API } from '../apiConfig';
 
 
 function ServForm() {
@@ -34,7 +35,7 @@ function ServForm() {
     }
     const [techs, setTechs] = useState([]);
     const fetchData = async () => {
-        const response = await fetch('http://localhost:8080/api/technicians/');
+        const response = await fetch(`${SERVICE_API}/api/technicians/`);
 
         if (response.ok) {
             const data = await response.json();
@@ -55,7 +56,7 @@ function ServForm() {
         status: "tbd",
       };
 
-      const appUrl = 'http://localhost:8080/api/appointments/';
+      const appUrl = `${SERVICE_API}/api/appointments/`;
       const fetchConfig = {
         method: "post",
         body: JSON.stringify(data),
@@ -86,9 +87,10 @@ function ServForm() {
     const messageClasses = (!submittedAuto) ? 'alert alert-success d-none mb-0' : 'alert alert-success mb-0';
 
     return (
-        <div className="row">
+        <div className="hero">
+        <div className="row w-100">
           <div className="offset-3 col-6">
-            <div className="shadow p-4 mt-4">
+            <div className="shadow p-4 rounded bg-white">
               <h1>Create A Service Appointment</h1>
               <form className={formClasses} onSubmit={handleSubmit} id="create-appointment-form">
                 <div className="form-floating mb-3">
@@ -128,6 +130,7 @@ function ServForm() {
               </div>
             </div>
           </div>
+        </div>
         </div>
       );
 }

@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { INVENTORY_API, SALES_API } from '../apiConfig';
 
 function SaleForm() {
     const [autos, setAutomobiles] = useState([])
@@ -12,9 +13,9 @@ function SaleForm() {
     })
 
     const getData = async () => {
-        const autourl = 'http://localhost:8100/api/automobiles/';
-        const salespersonurl = 'http://localhost:8090/api/salespeople/';
-        const customerurl = 'http://localhost:8090/api/customers/';
+        const autourl = `${INVENTORY_API}/api/automobiles/`;
+        const salespersonurl = `${SALES_API}/api/salespeople/`;
+        const customerurl = `${SALES_API}/api/customers/`;
         const responses = await Promise.all([fetch(autourl), fetch(salespersonurl), fetch(customerurl)]);
         if (responses.every(response => response.ok)) {
           const [autosData, salespeopleData, customersData] = await Promise.all(responses.map(response => response.json()));
@@ -40,7 +41,7 @@ function SaleForm() {
       const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const saleUrl = 'http://localhost:8090/api/sales/';
+        const saleUrl = `${SALES_API}/api/sales/`;
 
         try {
             const selectedAutomobile = autos.find(auto => auto.vin === formData.automobile);
@@ -65,7 +66,7 @@ function SaleForm() {
             const response = await fetch(saleUrl, fetchConfig);
 
             if (response.ok) {
-                const automobileUpdateUrl = `http://localhost:8100/api/automobiles/${encodeURIComponent(formDataToSend.automobile)}/`;
+                const automobileUpdateUrl = `${INVENTORY_API}/api/automobiles/${encodeURIComponent(formDataToSend.automobile)}/`;
                 const automobileUpdateConfig = {
                     method: 'put',
                     body: JSON.stringify({ sold: true }),
@@ -105,9 +106,10 @@ function SaleForm() {
         })
     }
     return (
-        <div className="row">
+        <div className="hero">
+        <div className="row w-100">
             <div className="offset-3 col-6">
-                <div className="shadow p-4 mt-4">
+                <div className="shadow p-4 rounded bg-white">
                     <h1>Create a Sale</h1>
                     <form onSubmit={handleSubmit} id="create-sale-form">
                         <div className="form-floating mb-3">
@@ -151,6 +153,7 @@ function SaleForm() {
                     </form>
                 </div>
             </div>
+        </div>
         </div>
     );
 }

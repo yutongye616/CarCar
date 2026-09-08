@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { SALES_API } from '../apiConfig';
 
 function SalesList() {
     const [sales, setSales] = useState([]);
@@ -7,8 +8,8 @@ function SalesList() {
     const [salespeople, setSalespeople] = useState([]);
 
     const getData = async () => {
-        const salesResponse = await fetch('http://localhost:8090/api/sales/');
-        const salespeopleResponse = await fetch('http://localhost:8090/api/salespeople/');
+        const salesResponse = await fetch(`${SALES_API}/api/sales/`);
+        const salespeopleResponse = await fetch(`${SALES_API}/api/salespeople/`);
 
         if (salesResponse.ok && salespeopleResponse.ok) {
             const salesData = await salesResponse.json();
@@ -38,7 +39,7 @@ function SalesList() {
     }
 
     const handleDelete = async (id) => {
-        const response = await fetch(`http://localhost:8090/api/sales/${id}/`, {
+        const response = await fetch(`${SALES_API}/api/sales/${id}/`, {
             method: 'DELETE',
         });
 
@@ -48,7 +49,10 @@ function SalesList() {
     }
 
     return (
-        <div>
+        <div className="hero px-4">
+        <div className="row w-100 justify-content-center">
+        <div className="col-11 col-lg-9">
+        <div className="shadow p-4 rounded bg-white">
             <h1>Sales</h1>
             <div className="mb-3">
                 <label htmlFor="salespersonFilter">Filter by Salesperson:</label>
@@ -98,6 +102,9 @@ function SalesList() {
                     ))}
                 </tbody>
             </table>
+        </div>
+        </div>
+        </div>
         </div>
     );
 }

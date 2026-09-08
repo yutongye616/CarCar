@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
+import { SALES_API } from '../apiConfig';
 
 function CustomerList() {
     const [customers, setCustomers] = useState([]);
 
     const getData = async () => {
-    const response = await fetch('http://localhost:8090/api/customers/');
+    const response = await fetch(`${SALES_API}/api/customers/`);
 
     if (response.ok) {
         const data = await response.json();
@@ -14,7 +15,7 @@ function CustomerList() {
 
 
     const handleDelete = async (id) => {
-        const response = await fetch(`http://localhost:8090/api/customers/${id}/`, {
+        const response = await fetch(`${SALES_API}/api/customers/${id}/`, {
             method: 'DELETE',
         });
 
@@ -27,7 +28,10 @@ function CustomerList() {
         getData()
     }, [])
     return (
-        <div>
+        <div className="hero px-4">
+        <div className="row w-100 justify-content-center">
+        <div className="col-11 col-lg-9">
+        <div className="shadow p-4 rounded bg-white">
             <h1>Customers</h1>
             <table className="table table-striped">
             <thead>
@@ -58,6 +62,9 @@ function CustomerList() {
             })}
             </tbody>
         </table>
+        </div>
+        </div>
+        </div>
         </div>
         )
 }

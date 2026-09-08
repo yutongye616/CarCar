@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
+import { INVENTORY_API } from '../apiConfig';
 
 
 function AutomobileList() {
     const [autos, setAuto] = useState([]);
 
     const getData = async() => {
-        const autoUrl = 'http://localhost:8100/api/automobiles/';
+        const autoUrl = `${INVENTORY_API}/api/automobiles/`;
         const response = await fetch(autoUrl);
 
         if (response.ok) {
@@ -19,7 +20,7 @@ function AutomobileList() {
     }, []);
 
     const handleDelete = async (vin) => {
-        const response = await fetch(`http://localhost:8100/api/automobiles/${vin}/`, {
+        const response = await fetch(`${INVENTORY_API}/api/automobiles/${vin}/`, {
             method: 'DELETE',
         });
 
@@ -29,9 +30,10 @@ function AutomobileList() {
     }
 
     return (
-        <div className="row">
-        <div className="offset-3 col-6">
-        <div className="shadow p-4 mt-4">
+        <div className="hero px-4">
+        <div className="row w-100 justify-content-center">
+        <div className="col-11 col-lg-9">
+        <div className="shadow p-4 rounded bg-white">
             <h1>Automobile List</h1>
         <table className="table table-striped">
             <thead>
@@ -69,6 +71,7 @@ function AutomobileList() {
                 })}
             </tbody>
         </table>
+        </div>
         </div>
         </div>
         </div>

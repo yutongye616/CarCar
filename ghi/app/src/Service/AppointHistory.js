@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { SERVICE_API } from '../apiConfig';
 
 function ServHist() {
   const [appointments, setAppointments] = useState([]);
@@ -6,7 +7,7 @@ function ServHist() {
   const [searchVin, setSearchVin] = useState('');
 
   const getData = async () => {
-    const url = 'http://localhost:8080/api/appointments/';
+    const url = `${SERVICE_API}/api/appointments/`;
     const response = await fetch(url);
 
     if (response.ok) {
@@ -29,7 +30,7 @@ function ServHist() {
   }, [searchVin, appointments]);
 
   const handleDelete = async (id) => {
-    const response = await fetch(`http://localhost:8080/api/appointments/${id}/`, {
+    const response = await fetch(`${SERVICE_API}/api/appointments/${id}/`, {
       method: 'DELETE',
     });
 
@@ -42,7 +43,10 @@ function ServHist() {
 
 
   return (
-    <div className="row">
+    <div className="hero px-4">
+    <div className="row w-100 justify-content-center">
+    <div className="col-11">
+    <div className="shadow p-4 rounded bg-white">
         <h1>Service History</h1>
           <div className="mb-3">
             <label htmlFor="vinSearch" className="form-label">
@@ -100,7 +104,10 @@ function ServHist() {
 
             </tbody>
         </table>
-        </div>
+    </div>
+    </div>
+    </div>
+    </div>
     );
 }
 

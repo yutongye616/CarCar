@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { SERVICE_API } from '../apiConfig';
 
 function ServList() {
   const [appointments, setAppointments] = useState([]);
@@ -6,7 +7,7 @@ function ServList() {
   const [searchVin, setSearchVin] = useState('');
 
   const getData = async () => {
-    const url = 'http://localhost:8080/api/appointments/';
+    const url = `${SERVICE_API}/api/appointments/`;
     const response = await fetch(url);
 
     if (response.ok) {
@@ -38,7 +39,7 @@ function ServList() {
       status,
     }
     try {
-      const url = `http://localhost:8080/api/appointments/${id}/`;
+      const url = `${SERVICE_API}/api/appointments/${id}/`;
       const response = await fetch(url, {
         method: 'PUT',
         body: JSON.stringify(data),
@@ -61,7 +62,10 @@ function ServList() {
 
 
   return (
-    <div className="row">
+    <div className="hero px-4">
+    <div className="row w-100 justify-content-center">
+    <div className="col-11">
+    <div className="shadow p-4 rounded bg-white">
         <h1>Service Appointments</h1>
           <div className="mb-3">
             <label htmlFor="vinSearch" className="form-label">
@@ -119,7 +123,10 @@ function ServList() {
 
             </tbody>
         </table>
-        </div>
+    </div>
+    </div>
+    </div>
+    </div>
     );
 }
 

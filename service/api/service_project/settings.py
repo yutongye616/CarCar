@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import os
 import dj_database_url
 from pathlib import Path
 
@@ -21,10 +22,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-6v%&r($8@l1=qo&wl1v34x)x^@uxqxuf#bq9s_uh-q8lmc(zk+'
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY',
+    'django-insecure-6v%&r($8@l1=qo&wl1v34x)x^@uxqxuf#bq9s_uh-q8lmc(zk+',
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'true').lower() == 'true'
 
 
 # Application definition
@@ -50,18 +54,17 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ALLOWED_HOSTS = [
-    "localhost",
-    "service-api",
-]
+ALLOWED_HOSTS = os.environ.get(
+    'ALLOWED_HOSTS', 'localhost,service-api'
+).split(',')
 
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:3000",
-]
+CSRF_TRUSTED_ORIGINS = os.environ.get(
+    'CSRF_TRUSTED_ORIGINS', 'http://localhost:3000'
+).split(',')
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-]
+CORS_ALLOWED_ORIGINS = os.environ.get(
+    'CORS_ALLOWED_ORIGINS', 'http://localhost:3000'
+).split(',')
 CORS_ALLOW_CREDENTIALS = True
 
 DJWTO_MODE = "TWO-COOKIES"

@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
+import { SERVICE_API } from '../apiConfig';
 
 function TechList() {
     const [techs, setTech] = useState([]);
 
     const getData = async() => {
-        const response = await fetch('http://localhost:8080/api/technicians/');
+        const response = await fetch(`${SERVICE_API}/api/technicians/`);
 
         if (response.ok) {
             const data = await response.json();
@@ -17,7 +18,7 @@ function TechList() {
     }, [])
 
     const handleDelete = async (id) => {
-        const response = await fetch(`http://localhost:8080/api/technicians/${id}/`, {
+        const response = await fetch(`${SERVICE_API}/api/technicians/${id}/`, {
             method: 'DELETE',
         });
 
@@ -27,9 +28,10 @@ function TechList() {
     }
 
     return (
-        <div className="row">
-        <div className="offset-3 col-6">
-        <div className="shadow p-4 mt-4">
+        <div className="hero px-4">
+        <div className="row w-100 justify-content-center">
+        <div className="col-11 col-lg-6">
+        <div className="shadow p-4 rounded bg-white">
             <h1>Technicians List</h1>
         <table className="table table-striped">
             <thead>
@@ -62,6 +64,7 @@ function TechList() {
             }
             </tbody>
         </table>
+        </div>
         </div>
         </div>
         </div>

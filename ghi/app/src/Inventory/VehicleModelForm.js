@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { INVENTORY_API } from '../apiConfig';
 
 function VehicleModelForm() {
     const [manufacturers, setManufacturers] = useState([])
@@ -9,7 +10,7 @@ function VehicleModelForm() {
     })
 
     const getData = async () => {
-        const url = 'http://localhost:8100/api/manufacturers/'
+        const url = `${INVENTORY_API}/api/manufacturers/`
         const response = await fetch(url)
 
         if (response.ok) {
@@ -25,7 +26,7 @@ function VehicleModelForm() {
     const handleSubmit = async (event) => {
         event.preventDefault()
 
-        const modelUrl = 'http://localhost:8100/api/models/'
+        const modelUrl = `${INVENTORY_API}/api/models/`
 
         const fetchConfig = {
             method: "post",
@@ -56,9 +57,10 @@ function VehicleModelForm() {
     }
 
     return (
-        <div className="row">
+        <div className="hero">
+        <div className="row w-100">
             <div className="offset-3 col-6">
-                <div className="shadow p-4 mt-4">
+                <div className="shadow p-4 rounded bg-white">
                     <h1>New Model</h1>
                     <form onSubmit={handleSubmit} id="create-model-form">
                         <div className="form-floating mb-3">
@@ -85,6 +87,7 @@ function VehicleModelForm() {
                     </form>
                 </div>
             </div>
+        </div>
         </div>
     );
 }
