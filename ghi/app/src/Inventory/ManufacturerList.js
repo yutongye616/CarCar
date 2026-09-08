@@ -33,6 +33,7 @@ function ManufacturerList() {
         <div className="col-11 col-lg-6">
         <div className="shadow p-4 rounded bg-white">
             <h1>Manufacturers</h1>
+            <div className="table-responsive">
             <table className="table table-striped">
             <thead>
             <tr>
@@ -45,9 +46,9 @@ function ManufacturerList() {
                 return (
                 <tr key={manufacturer.href}>
                     <td>{ manufacturer.name }</td>
-                    <td>
+                    <td className="text-nowrap">
                         <button
-                            className="btn btn-danger"
+                            className="btn btn-danger btn-sm"
                             onClick={() => handleDelete(manufacturer.id)}
                         >
                             Delete
@@ -58,6 +59,7 @@ function ManufacturerList() {
             })}
             </tbody>
         </table>
+        </div>
         </div>
         </div>
         </div>
