@@ -33,6 +33,7 @@ function VehicleModelList() {
         <div className="col-11 col-lg-8">
         <div className="shadow p-4 rounded bg-white">
             <h1>Models</h1>
+            <div className="table-responsive">
             <table className="table table-striped">
             <thead>
             <tr>
@@ -57,9 +58,9 @@ function VehicleModelList() {
                             />
                         )}
                     </td>
-                    <td>
+                    <td className="text-nowrap">
                         <button
-                            className="btn btn-danger"
+                            className="btn btn-danger btn-sm"
                             onClick={() => handleDelete(model.id)}
                         >
                             Delete
@@ -70,6 +71,7 @@ function VehicleModelList() {
             })}
             </tbody>
         </table>
+        </div>
         </div>
         </div>
         </div>
