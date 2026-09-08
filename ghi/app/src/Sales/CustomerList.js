@@ -33,6 +33,7 @@ function CustomerList() {
         <div className="col-11 col-lg-9">
         <div className="shadow p-4 rounded bg-white">
             <h1>Customers</h1>
+            <div className="table-responsive">
             <table className="table table-striped">
             <thead>
             <tr>
@@ -49,9 +50,9 @@ function CustomerList() {
                     <td>{ customer.first_name } { customer.last_name }</td>
                     <td>{ customer.address }</td>
                     <td>{ customer.phone_number }</td>
-                    <td>
+                    <td className="text-nowrap">
                         <button
-                            className="btn btn-danger"
+                            className="btn btn-danger btn-sm"
                             onClick={() => handleDelete(customer.id)}
                         >
                             Delete
@@ -62,6 +63,7 @@ function CustomerList() {
             })}
             </tbody>
         </table>
+        </div>
         </div>
         </div>
         </div>
