@@ -79,6 +79,7 @@ function ServList() {
               onChange={(car) => setSearchVin(car.target.value)}
             />
           </div>
+        <div className="table-responsive">
         <table className="table table-striped">
             <thead>
                 <tr>
@@ -109,11 +110,17 @@ function ServList() {
                             <td> { appointment.techname } </td>
                             <td> { appointment.service_reason } </td>
                             <td> { appointment.status } </td>
-                            <td>
-                              <button style={{background: 'red'}} onClick={() => handleStatusUpdate(appointment.id, 'cancelled')}>
+                            <td className="text-nowrap">
+                              <button
+                                className="btn btn-danger btn-sm me-1"
+                                onClick={() => handleStatusUpdate(appointment.id, 'cancelled')}
+                              >
                                 Cancel
                               </button>
-                              <button style={{background: 'green'}} onClick={() => handleStatusUpdate(appointment.id, 'finished')}>
+                              <button
+                                className="btn btn-success btn-sm"
+                                onClick={() => handleStatusUpdate(appointment.id, 'finished')}
+                              >
                                 Finish
                               </button>
                             </td>
@@ -123,6 +130,7 @@ function ServList() {
 
             </tbody>
         </table>
+        </div>
     </div>
     </div>
     </div>
