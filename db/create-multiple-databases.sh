@@ -5,9 +5,11 @@ set -u
 
 function create_user_and_database() {
 	local database=$1
+	local password_var="$(echo "$database" | tr '[:lower:]' '[:upper:]')_DB_PASSWORD"
+	local user_password="${!password_var}"
 	echo "  Creating user and database '$database'"
 	psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
-	    CREATE USER $database WITH LOGIN PASSWORD 'password';
+	    CREATE USER $database WITH LOGIN PASSWORD '$user_password';
 	    CREATE DATABASE $database;
 	    GRANT ALL PRIVILEGES ON DATABASE $database TO $database;
 		ALTER ROLE $database CREATEDB;

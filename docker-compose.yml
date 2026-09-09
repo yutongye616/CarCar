@@ -19,9 +19,10 @@ services:
     volumes:
       - beta-data:/var/lib/postgresql/data
       - ./db:/docker-entrypoint-initdb.d
+    env_file:
+      - ./db/.env
     environment:
       - POSTGRES_MULTIPLE_DATABASES=inventory,sales,service
-      - POSTGRES_PASSWORD=test-databases
     ports:
       - 15432:5432
   inventory-api:
