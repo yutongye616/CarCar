@@ -79,6 +79,8 @@ services:
       - ./sales/api:/app
     depends_on:
       - database
+    env_file:
+      - ./sales/api/.env
     environment:
       DATABASE_URL: postgres://sales:password@database:5432/sales
       WAIT_HOSTS: database:5432
