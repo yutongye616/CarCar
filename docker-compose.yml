@@ -34,6 +34,8 @@ services:
       - ./inventory/api:/app
     depends_on:
       - database
+    env_file:
+      - ./inventory/api/.env
     environment:
       DATABASE_URL: postgres://inventory:password@database:5432/inventory
       WAIT_HOSTS: database:5432
