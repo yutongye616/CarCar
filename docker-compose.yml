@@ -38,7 +38,6 @@ services:
     env_file:
       - ./inventory/api/.env
     environment:
-      DATABASE_URL: postgres://inventory:password@database:5432/inventory
       WAIT_HOSTS: database:5432
       WAIT_TIMEOUT: 240
   service-api:
