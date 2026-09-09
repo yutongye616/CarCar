@@ -53,7 +53,6 @@ services:
     env_file:
       - ./service/api/.env
     environment:
-      DATABASE_URL: postgres://service:password@database:5432/service
       WAIT_HOSTS: database:5432
       WAIT_TIMEOUT: 240
   service-poller:
@@ -67,8 +66,9 @@ services:
     depends_on:
       - database
       - service-api
+    env_file:
+      - ./service/api/.env
     environment:
-      DATABASE_URL: postgres://service:password@database:5432/service
       WAIT_HOSTS: database:5432,service-api:8000
       WAIT_TIMEOUT: 240
   sales-api:
