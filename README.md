@@ -1,6 +1,6 @@
-# AutoFlow 🚗
+# Auto Click 🚗
 
-AutoFlow is an application that handles both the service and sales side of an automotive service and sales center. It manages Automobile Inventory (make, model, and VIN), Service Appointments, Technicians, and the Customers, Salespeople, and Sales tied to vehicle purchases.
+Auto Click is an application that handles both the service and sales side of an automotive service and sales center. It manages Automobile Inventory (make, model, and VIN), Service Appointments, Technicians, and the Customers, Salespeople, and Sales tied to vehicle purchases.
 
 ## Table of Contents
 
@@ -37,7 +37,7 @@ AutoFlow is an application that handles both the service and sales side of an au
 
 ## Project Diagram
 
-![AutoFlow Diagram](ProjectBeta.png)
+![Auto Click Diagram](ProjectBeta.png)
 
 ## Service Microservice
 
