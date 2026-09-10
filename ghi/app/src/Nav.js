@@ -4,7 +4,7 @@ function Nav() {
   return (
     <nav className="d-flex flex-column flex-shrink-0 p-3 text-white sidebar">
       <NavLink to="/" className="d-flex align-items-center mb-3 text-white text-decoration-none">
-        <span className="fs-4 fw-bold">AutoFlow</span>
+        <span className="fs-4 fw-bold">Auto Click</span>
       </NavLink>
       <hr />
       <ul className="nav nav-pills flex-column mb-auto">
