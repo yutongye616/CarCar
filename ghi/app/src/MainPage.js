@@ -4,7 +4,7 @@ function MainPage() {
   return (
     <div className="hero px-4 py-5 text-center">
       <div className="hero-content">
-        <h1 className="display-3 fw-bold text-white mb-2">AutoFlow</h1>
+        <h1 className="display-3 fw-bold text-white mb-2">Auto Click</h1>
         <div className="hero-accent mx-auto mb-4" />
         <div className="col-lg-6 mx-auto">
           <p className="lead mb-4 text-light">
