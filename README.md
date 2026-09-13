@@ -22,7 +22,7 @@ Auto Click is an application that handles both the service and sales side of an 
 
 ## Project Setup 💻
 
-1. Fork the repo at https://github.com/yutongye616/AutoFlow
+1. Fork the repo at https://github.com/yutongye616/AutoClick
 2. Clone your fork to your projects directory.
 3. Change directory into the repository directory.
 4. Run the following commands to set up the Docker environment:
